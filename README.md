@@ -22,15 +22,14 @@ This is example of android project architecture.
   * Settings
 
 ## Project Architecture
-
-  ### ApiClient -
+  ##1. ApiClient
     Used retrofit with and without dagger2
     Without dagger2
     Class - ApiCallback - Get all pai call and parse response in POJO format and send success or error from call api
             ApiClient - setup all api client with url, interceptor, gson and ssl
             ApiInterceptor - Control header, app version name and code, and validate by access token
             IApiRequest - This is interface. Create all method to api call
-    ```java
+```java
     ApiCallback-
     public abstract class ApiCallback<T> implements Callback<BaseResponse<T>> {... and so on
 
@@ -48,17 +47,17 @@ This is example of android project architecture.
         Call<BaseResponse<User>> loginAPI(
                 @Field(FIELD.EMAIL) String email);
     }
-    ```
+```
     With dagger2 -
     Class - NetModule - Create dagger2 module for network
-    ```java
+```java
     NetModule -
-@Module
-public class NetModule {
-    private final String url;
-    public NetModule(String url) {
-        this.url = url;
-    }
+    @Module
+    public class NetModule {
+       private final String url;
+       public NetModule(String url) {
+          this.url = url;
+       }
     /*
      * @param application
      *        Fetch Application object from AppModule
@@ -110,13 +109,9 @@ public class NetModule {
         IApiService service = retrofit.create(IApiService.class);
         return service;
     }
-
 }
-    }
-    ```
-
-
-#Fragment used bt Factory Pattern
+```
+## Fragment used bt Factory Pattern
 ```java
    public static FragmentFactory newInstance() {
         if (INSTANCE == null) {
@@ -141,62 +136,6 @@ To used fragment factory pattern
 ```java
  fragment = FragmentFactory.newInstance().getFragment(FragmentFactory.HOME_FRAGMENT_TAG);
 ```
-
-
-
-1. Add code in application class project
-```java
- appComponent = DaggerAppComponent.builder()
-                .appModule(new AppModule(this))
-                .netModule(new NetModule("https://api.github.com/"))
-                .build();
- ```           
- 2. Create AppComponent
- ```java
- @Singleton
-@Component(modules = {AppModule.class, GsonModule.class, NetModule.class})
-public interface AppComponent {
-    void inject(App app);
-    void plus(FlowerActivity flowerActivity);
-    void plus(FlowerDetailActivity flowerDetailActivity);
-}
-```
-3. Create Module
-```java
-
-@Module
-public class AppModule {
-    private final Application application;
-    public AppModule(Application application) {
-        this.application = application;
-    }
-    @Provides
-    @Singleton
-    Application providesApplication() {
-        return application;
-    }
-}
-
-@Module
-public class GsonModule {
-    @Provides
-    @Singleton
-    Gson provideGson() {
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES);
-        return gsonBuilder.create();
-    }
-}
-
-@Module
-public class NetModule {
-    private final String url;
-    public NetModule(String url) {
-        this.url = url;
-    }
-    add complete code here ...................................................
-```
-Run this project and enjoy with dagger2 with mvc pattern...
 
 # Licence
 
