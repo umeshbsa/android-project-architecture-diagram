@@ -7,24 +7,23 @@ This is example of android project architecture.
   * Android Design Pattern - MVC
   * Package Init - Package is init by layer
   * Dependency Lib -
-                   ** Dagger2 for DI.
-                   ** Glide for image loading
+                   * Dagger2 for DI.
+                   * Glide for image loading
                    * CardView - elevation for view
                    * RecycleView - Show data in list/grid
                    * Retrofit - Rest network api call
                    * OkHttp3 - Used for rest api and it is used to retrofit, interceptor
                    * PubNub - Chatting for text - https://www.pubnub.com/
 
-# Module Define -
+## Module Define
+  * Login
+  * Feed
+  * Notification
+  * Settings
 
-  Login
-  Feed
-  Notification
-  Settings
+## Project Architecture
 
-# Project Architecture -
-
-  - ApiClient -
+  ### ApiClient -
     Used retrofit with and without dagger2
     Without dagger2
     Class - ApiCallback - Get all pai call and parse response in POJO format and send success or error from call api
