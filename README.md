@@ -49,15 +49,15 @@ This is example of android project architecture.
     &emsp;ApiInterceptor - Control header, app version name and code, and validate by access token<br/>
     &emsp;IApiRequest - This is interface. Create all method to api call<br/>
 ```java
-    Class ApiCallback
+    //Class ApiCallback
     public abstract class ApiCallback<T> implements Callback<BaseResponse<T>> {... and so on
-    Class ApiClient
+    //Class ApiClient
     Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(BuildConfig.HOST)
                     .addConverterFactory(GsonConverterFactory.create()).client(okHttpClient)
                     .build();
             apiRequest = retrofit.create(requestClass);
-    Interface IApiRequest
+    //Interface IApiRequest
     public interface IApiRequest {
         @FormUrlEncoded
         @POST("api/v1/login")
@@ -135,12 +135,12 @@ Fragment Factory Pattern architecture<br/>
       <img src="http://i.imgur.com/4aRRnAe.gif" width="350" />
 
 5. ##Activity State Machine<br/>
-   <img src="http://i.imgur.com/4aRRnAe.gif" width="350" />
-
+   <p align="left">
+    <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/screen_activity_state_machine.png" width="350" />
+   </p>
 6. ##Comment Data flow<br/>
    Update item from screen2 to screen1<br/>
    Used Observer Pattern<br/>
-   <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/screen_activity_state_machine.png" width="350" />
 
 7. ##Abstraction login<br/>
    Call method from adapter<br/>
