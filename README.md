@@ -23,7 +23,7 @@ This is example of android project architecture.
   * Settings
 
 ## Project Architecture
-```html
+```css
 <font color="red">This is some text!</font>
 ```
 1. ApiClient<br/>
