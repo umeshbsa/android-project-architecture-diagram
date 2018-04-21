@@ -7,6 +7,7 @@ This is example of android project architecture.
   * Android Design Pattern - MVC
   * Package Init - Package is init by layer
   * Dependency Lib <br/>
+```html
    &emsp;Dagger2 for DI.<br/>
    &emsp;Glide for image loading<br/>
    &emsp;CardView - elevation for view<br/>
@@ -14,7 +15,7 @@ This is example of android project architecture.
    &emsp;Retrofit - Rest network api call<br/>
    &emsp;OkHttp3 - Used for rest api and it is used to retrofit, interceptor<br/>
    &emsp;PubNub - Chatting for text - https://www.pubnub.com/<br/>
-
+```
 ## Module Define
   * Login
   * Feed
@@ -47,8 +48,8 @@ This is example of android project architecture.
                 @Field(FIELD.EMAIL) String email);
     }
 ```
-    With dagger2 -
-    Class NetModule - Create dagger2 module for network
+    &emsp;With dagger2 -
+    &emsp;Class NetModule - Create dagger2 module for network
 ```java
     NetModule -
     @Module
