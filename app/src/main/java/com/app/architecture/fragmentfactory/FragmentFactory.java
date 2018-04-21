@@ -10,7 +10,6 @@ public class FragmentFactory {
     public static String HOME_FRAGMENT_TAG = "homeFragmentTag";
     public static String LOGIN_FRAGMENT_TAG = "loginFragmentTag";
     public static String FLAVOR_FRAGMENT_TAG = "flavorFragmentTag";
-
     private static FragmentFactory INSTANCE;
     private BaseFragment baseFragment;
 

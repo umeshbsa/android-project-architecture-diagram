@@ -1,19 +1,20 @@
 # Android Project Architecture.
 This is example of android project architecture.
 
-# Project Setup -
+## Project Setup -
 
-  Project name -
-  Package name - com.app....
-  Android Design Pattern - MVC
-  Package Init - Package is init by layer
-  Dependency Lib - Dagger2 for DI.
-                   Glide for image loading
-                   CardView - elevation for view
-                   RecycleView - Show data in list/grid
-                   Retrofit - Rest network api call
-                   OkHttp3 - Used for rest api and it is used to retrofit, interceptor
-                   PubNub - Chatting for text - https://www.pubnub.com/
+  * Project name -
+  * Package name - com.app....
+  * Android Design Pattern - MVC
+  * Package Init - Package is init by layer
+  * Dependency Lib -
+                   * Dagger2 for DI.
+                   * Glide for image loading
+                   * CardView - elevation for view
+                   * RecycleView - Show data in list/grid
+                   * Retrofit - Rest network api call
+                   * OkHttp3 - Used for rest api and it is used to retrofit, interceptor
+                   * PubNub - Chatting for text - https://www.pubnub.com/
 
 # Module Define -
 
@@ -115,6 +116,33 @@ public class NetModule {
 }
     }
     ```
+
+
+#Fragment used bt Factory Pattern
+```java
+   public static FragmentFactory newInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new FragmentFactory();
+        }
+        return INSTANCE;
+    }
+     public BaseFragment getFragment(String TAG) {
+        switch (TAG) {
+            case "homeFragmentTag":
+                baseFragment = new HomeFragment();
+                break;
+
+            case "loginFragmentTag":
+                baseFragment = new LoginFragment();
+                break;
+        }
+        return baseFragment;
+    }
+```
+To used fragment factory pattern
+```java
+ fragment = FragmentFactory.newInstance().getFragment(FragmentFactory.HOME_FRAGMENT_TAG);
+```
 
 
 
