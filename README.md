@@ -7,8 +7,8 @@ This is example of android project architecture.
   * Android Design Pattern - MVC
   * Package Init - Package is init by layer
   * Dependency Lib -<br/>
-   &emspDagger2 for DI.<br/>
-   &emspGlide for image loading<br/>
+   &emsp;Dagger2 for DI.<br/>
+   &emsp;Glide for image loading<br/>
                    CardView - elevation for view<br/>
                    RecycleView - Show data in list/grid<br/>
                    Retrofit - Rest network api call<br/>
