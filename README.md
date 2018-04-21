@@ -1,15 +1,14 @@
-# Android Project Architecture.
+## Android Project Architecture.
 This is example of android project architecture.
 
-## Project Setup -
-
+## Project Setup
   * Project name -
   * Package name - com.app....
   * Android Design Pattern - MVC
   * Package Init - Package is init by layer
   * Dependency Lib -
-                   * Dagger2 for DI.
-                   * Glide for image loading
+                   ** Dagger2 for DI.
+                   ** Glide for image loading
                    * CardView - elevation for view
                    * RecycleView - Show data in list/grid
                    * Retrofit - Rest network api call
