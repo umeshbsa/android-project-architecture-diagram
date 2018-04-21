@@ -123,10 +123,10 @@ Fragment Factory Pattern architecture<br/>
 3. ##Database Design<br/>
      &emsp;*Used Room architecture<br/>
      Room Architecture<br/>
-     <img src="http://i.imgur.com/4aRRnAe.gif" width="350" />
+     <img src="http://i.imgur.com/4aRRnAe.gif" width="350" /><br/>
      &emsp;*Used Content Provider<br/>
      ContentProvider Architecture<br/>
-     <img src="http://i.imgur.com/4aRRnAe.gif" width="350" />
+     <img src="http://i.imgur.com/4aRRnAe.gif" width="350" /><br/>
      &emsp;*Create Db Schema.<br/>
      <img src="http://i.imgur.com/4aRRnAe.gif" width="350" />
 
@@ -140,7 +140,7 @@ Fragment Factory Pattern architecture<br/>
 6. ##Comment Data flow<br/>
    Update item from screen2 to screen1<br/>
    Used Observer Pattern<br/>
-   <img src="http://i.imgur.com/4aRRnAe.gif" width="350" />
+   <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/screen_activity_state_machine.png" width="350" />
 
 7. ##Abstraction login<br/>
    Call method from adapter<br/>
