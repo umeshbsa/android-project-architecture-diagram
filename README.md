@@ -1,5 +1,19 @@
-# Android Dagger2 with MVC design pattern
-This is example of android dagger2 with brief code by using mvc design pattern.
+# Android Project Architecture.
+This is example of android project architecture.
+
+# 1. Project Setup -
+  Project name -
+  Package name - com.app....
+  Android Design Pattern - MVC
+  Package Init - Package is init by layer
+  Dependency Lib - Dagger2 for DI.
+                   Glide for image loading
+                   CardView - elevation for view
+                   RecycleView - Show data in list/grid
+                   Retrofit - Rest network api call
+                   OkHttp3 - Used for rest api and it is used to retrofit, interceptor
+                   PubNub - Chatting for text - https://www.pubnub.com/
+
 
 1. Add code in application class project
 ```java
