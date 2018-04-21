@@ -111,7 +111,7 @@ This is example of android project architecture.
     }
 }
 ```
-## Factory Pattern<br/>
+2. #Factory Pattern<br/>
    Used this pattern to manage fragment
 ```java
    public static FragmentFactory newInstance() {
