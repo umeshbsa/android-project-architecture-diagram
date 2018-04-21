@@ -6,14 +6,14 @@ This is example of android project architecture.
   * Package name - com.app....
   * Android Design Pattern - MVC
   * Package Init - Package is init by layer
-  * Dependency Lib -<br/>
+  * Dependency Lib <br/>
    &emsp;Dagger2 for DI.<br/>
    &emsp;Glide for image loading<br/>
-                   CardView - elevation for view<br/>
-                   RecycleView - Show data in list/grid<br/>
-                   Retrofit - Rest network api call<br/>
-                   OkHttp3 - Used for rest api and it is used to retrofit, interceptor<br/>
-                   PubNub - Chatting for text - https://www.pubnub.com/<br/>
+   &emsp;CardView - elevation for view<br/>
+   &emsp;RecycleView - Show data in list/grid<br/>
+   &emsp;Retrofit - Rest network api call<br/>
+   &emsp;OkHttp3 - Used for rest api and it is used to retrofit, interceptor<br/>
+   &emsp;PubNub - Chatting for text - https://www.pubnub.com/<br/>
 
 ## Module Define
   * Login
@@ -22,25 +22,23 @@ This is example of android project architecture.
   * Settings
 
 ## Project Architecture
-    1. ApiClient
+    ##ApiClient
     Used retrofit with and without dagger2
     Without dagger2
-    Class - ApiCallback - Get all pai call and parse response in POJO format and send success or error from call api
-            ApiClient - setup all api client with url, interceptor, gson and ssl
-            ApiInterceptor - Control header, app version name and code, and validate by access token
-            IApiRequest - This is interface. Create all method to api call
+    *ApiCallback - Get all pai call and parse response in POJO format<br/> and send success or error from call api
+    *ApiClient - setup all api client with url, interceptor, gson and ssl
+    *ApiInterceptor - Control header, app version name and code, and validate by access token
+    *IApiRequest - This is interface. Create all method to api call
 ```java
-    ApiCallback-
+    Class ApiCallback
     public abstract class ApiCallback<T> implements Callback<BaseResponse<T>> {... and so on
-
-    ApiClient-
+    Class ApiClient
     Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(BuildConfig.HOST)
                     .addConverterFactory(GsonConverterFactory.create()).client(okHttpClient)
                     .build();
             apiRequest = retrofit.create(requestClass);
-
-    IApiRequest-
+    Interface IApiRequest
     public interface IApiRequest {
         @FormUrlEncoded
         @POST("api/v1/login")
@@ -49,7 +47,7 @@ This is example of android project architecture.
     }
 ```
     With dagger2 -
-    Class - NetModule - Create dagger2 module for network
+    Class NetModule - Create dagger2 module for network
 ```java
     NetModule -
     @Module
