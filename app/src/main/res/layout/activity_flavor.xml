@@ -3,7 +3,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/layout_header_toolbar" />
+    <include layout="@layout/include_header_toolbar" />
 
     <FrameLayout
         android:id="@+id/fragment_container"

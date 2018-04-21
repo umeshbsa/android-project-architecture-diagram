@@ -15,6 +15,24 @@ This is example of android project architecture.
    &emsp;OkHttp3 - Used for rest api and it is used to retrofit, interceptor<br/>
    &emsp;PubNub - Chatting for text - https://www.pubnub.com/
 
+## Package Setup - Layer rule
+   Package name - include classes, interface
+   *activity - BaseActivity, LoginActivity, HomeActivity
+   *adapter - FlavorAdapter, FlowerAdapter
+   *apiclient - ApiCallback, ApiClient, ApiInterceptor, IApiRequest
+   *di - Create component and module for dagger2
+
+## Naming Convention
+   *activity - LoginActivity.java, activity_login.xml
+   *adapter - FlavorAdapter.java, adapter_flavor.xml
+   *fragment - LoginFragment.java - fragment_login.xml
+   *view - CustomRatingBar - inflater_custom_rating_bar, include_header_toolbar
+   *color - color_ff00ff
+   *dimens - dp_10, dp_12, sp_12
+   *menu - menu_home, menu_flower
+   *drawable - bg_rect_white, bg_circle_blue, selector_check_box
+   *drawable-hdpi - ic_login_user_logo, ic_login_user_camera, ic_notification_back
+
 ## Module Define
   * Login
   * Feed
@@ -57,10 +75,7 @@ This is example of android project architecture.
        public NetModule(String url) {
           this.url = url;
        }
-    /*
-     * @param application
-     *        Fetch Application object from AppModule
-     * */
+
     @Provides
     @Singleton
     Cache provideOkHttpCache(Application application) {
@@ -68,10 +83,6 @@ This is example of android project architecture.
         return new Cache(application.getCacheDir(), cacheSize);
     }
 
-    /*
-     * @param cache
-     *        Fetch Cache object from 'Cache provideOkHttpCache' method
-     * */
     @Provides
     @Singleton
     OkHttpClient provideOkHttpClient(Cache cache) {
@@ -80,13 +91,6 @@ This is example of android project architecture.
         return okHttpClient;
     }
 
-    /*
-     * @param gson
-     *        Fetch Gson object from 'GsonModule' method
-     *
-     * @param okHttpClient
-     *        Fetch OkHttpClient object from 'OkHttpClient provideOkHttpClient' method
-     * */
     @Provides
     @Singleton
     Retrofit provideRetrofit(Gson gson, OkHttpClient okHttpClient) {
@@ -97,11 +101,6 @@ This is example of android project architecture.
                 .build();
     }
 
-    /*
-     * @param retrofit
-     *        Fetch retrofit class from gradle dependency
-     *        This is IApiService interface to used inject in activity class
-     * */
     @Provides
     @Singleton
     IApiService provideIApiService(Retrofit retrofit) {
@@ -138,11 +137,12 @@ Used this code in any activity/fragment to get fragment instance by factory patt
    fragment = FragmentFactory.newInstance().getFragment(FragmentFactory.HOME_FRAGMENT_TAG);
 ```
 3. ##Database Design<br/>
-     &emsp;Used Room architecture<br/>
-     &emsp;Used Content Provider
-     &emsp;Create Db Schema.
+     &emsp;*Used Room architecture<br/>
+     &emsp;*Used Content Provider
+     &emsp;*Create Db Schema.<br/>
      <img src="http://i.imgur.com/4aRRnAe.gif" width="350" />
 
+4. ##
 
 # Licence
 
