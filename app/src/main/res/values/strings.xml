@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name" translatable="false">Dagger2 mvc</string>
+    <string name="loc">Settings</string>
+</resources>

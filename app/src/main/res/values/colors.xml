@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+    <!--Indigo 500-->
+    <color name="primary_500">#3F51B5</color>
+    <!--Indigo 700-->
+    <color name="primary_700">#303F9F</color>
+    <!--Pink 500-->
+    <color name="accent_500">#E91E63</color>
+    <!--Pink 700-->
+    <color name="accent_700">#C2185B</color>
+    <color name="black_trans80">#33000000</color>
+    <color name="bg_light">#FAFAFA</color>
+    <color name="indicator_unselected">#4D000000</color>
+
+    <color name="white">#ffffff</color>
+    <color name="themeColor">#FEDB50</color>
+    <color name="dark_grey">#404040</color>
+    <color name="color_255_92_92">#FF5C5C</color>
+    <color name="color_46_226_186">#2EE2BA</color>
+
+</resources>
