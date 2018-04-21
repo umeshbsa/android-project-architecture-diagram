@@ -6,15 +6,15 @@ This is example of android project architecture.
   * Package name - com.app....
   * Android Design Pattern - MVC
   * Package Init - Package is init by layer
-  * Dependency Lib <br/>
+  * Dependency Lib
 ```html
-   &emsp;Dagger2 for DI.<br/>
-   &emsp;Glide for image loading<br/>
-   &emsp;CardView - elevation for view<br/>
-   &emsp;RecycleView - Show data in list/grid<br/>
-   &emsp;Retrofit - Rest network api call<br/>
-   &emsp;OkHttp3 - Used for rest api and it is used to retrofit, interceptor<br/>
-   &emsp;PubNub - Chatting for text - https://www.pubnub.com/<br/>
+   Dagger2 for DI.
+   Glide for image loading
+   CardView - elevation for view
+   RecycleView - Show data in list/grid
+   Retrofit - Rest network api call
+   OkHttp3 - Used for rest api and it is used to retrofit, interceptor
+   PubNub - Chatting for text - https://www.pubnub.com/
 ```
 ## Module Define
   * Login
