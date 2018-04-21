@@ -15,22 +15,22 @@ This is example of android project architecture.
    &emsp;OkHttp3 - Used for rest api and it is used to retrofit, interceptor<br/>
    &emsp;PubNub - Chatting for text - https://www.pubnub.com/
 
-## Package Setup - Layer rule
-   Package name - include classes, interface
-   *activity - BaseActivity, LoginActivity, HomeActivity
-   *adapter - FlavorAdapter, FlowerAdapter
-   *apiclient - ApiCallback, ApiClient, ApiInterceptor, IApiRequest
+## Package Setup - Layer rule<br/>
+   Package name - include classes, interface<br/>
+   *activity - BaseActivity, LoginActivity, HomeActivity<br/>
+   *adapter - FlavorAdapter, FlowerAdapter<br/>
+   *apiclient - ApiCallback, ApiClient, ApiInterceptor, IApiRequest<br/>
    *di - Create component and module for dagger2
 
-## Naming Convention
-   *activity - LoginActivity.java, activity_login.xml
-   *adapter - FlavorAdapter.java, adapter_flavor.xml
-   *fragment - LoginFragment.java - fragment_login.xml
-   *view - CustomRatingBar - inflater_custom_rating_bar, include_header_toolbar
-   *color - color_ff00ff
-   *dimens - dp_10, dp_12, sp_12
-   *menu - menu_home, menu_flower
-   *drawable - bg_rect_white, bg_circle_blue, selector_check_box
+## Naming Convention<br/>
+   *activity - LoginActivity.java, activity_login.xml<br/>
+   *adapter - FlavorAdapter.java, adapter_flavor.xml<br/>
+   *fragment - LoginFragment.java - fragment_login.xml<br/>
+   *view - CustomRatingBar - inflater_custom_rating_bar, include_header_toolbar<br/>
+   *color - color_ff00ff<br/>
+   *dimens - dp_10, dp_12, sp_12<br/>
+   *menu - menu_home, menu_flower<br/>
+   *drawable - bg_rect_white, bg_circle_blue, selector_check_box<br/>
    *drawable-hdpi - ic_login_user_logo, ic_login_user_camera, ic_notification_back
 
 ## Module Define
@@ -65,32 +65,10 @@ This is example of android project architecture.
                 @Field(FIELD.EMAIL) String email);
     }
 ```
-    &emsp;With dagger2 -
-    &emsp;Class NetModule - Create dagger2 module for network
+    With dagger2
+    Class NetModule - Create dagger2 module for network
+    NetModule module:
 ```java
-    NetModule -
-    @Module
-    public class NetModule {
-       private final String url;
-       public NetModule(String url) {
-          this.url = url;
-       }
-
-    @Provides
-    @Singleton
-    Cache provideOkHttpCache(Application application) {
-        int cacheSize = 10 * 1024 * 1024;
-        return new Cache(application.getCacheDir(), cacheSize);
-    }
-
-    @Provides
-    @Singleton
-    OkHttpClient provideOkHttpClient(Cache cache) {
-        OkHttpClient okHttpClient = new OkHttpClient();
-        okHttpClient.newBuilder().cache(cache);
-        return okHttpClient;
-    }
-
     @Provides
     @Singleton
     Retrofit provideRetrofit(Gson gson, OkHttpClient okHttpClient) {
