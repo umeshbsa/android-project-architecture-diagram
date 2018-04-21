@@ -23,7 +23,9 @@ This is example of android project architecture.
   * Settings
 
 ## Project Architecture
+```html
 <font color="red">This is some text!</font>
+```
 1. ApiClient<br/>
     &emsp;Used retrofit with and without dagger2<br/>
     &emsp;Without dagger2<br/>
