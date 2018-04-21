@@ -22,13 +22,14 @@ This is example of android project architecture.
   * Settings
 
 ## Project Architecture
-##ApiClient<br/>
-    Used retrofit with and without dagger2<br/>
-    Without dagger2<br/>
-    *ApiCallback - Get all pai call and parse response in POJO format<br/> and send success or error from call api<br/>
-    *ApiClient - setup all api client with url, interceptor, gson and ssl<br/>
-    *ApiInterceptor - Control header, app version name and code, and validate by access token<br/>
-    *IApiRequest - This is interface. Create all method to api call<br/>
+1. ApiClient<br/>
+    &emsp;Used retrofit with and without dagger2<br/>
+    &emsp;Without dagger2<br/>
+
+    &emsp;ApiCallback - Get all pai call and parse response in POJO format and send success or error from call api<br/>
+    &emsp;ApiClient - setup all api client with url, interceptor, gson and ssl<br/>
+    &emsp;ApiInterceptor - Control header, app version name and code, and validate by access token<br/>
+    &emsp;IApiRequest - This is interface. Create all method to api call<br/>
 ```java
     Class ApiCallback
     public abstract class ApiCallback<T> implements Callback<BaseResponse<T>> {... and so on
