@@ -21,11 +21,11 @@ This is example of android project architecture.
   * Feed
   * Notification
   * Settings
-
-## Project Architecture
 ```css
 <font color="red">This is some text!</font>
 ```
+## Project Architecture
+
 1. ApiClient<br/>
     &emsp;Used retrofit with and without dagger2<br/>
     &emsp;Without dagger2<br/>
