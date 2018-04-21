@@ -11,10 +11,8 @@ import retrofit2.Response;
   Api callback
  */
 public abstract class ApiCallback<T> implements Callback<BaseResponse<T>> {
-
     @Override
     public void onResponse(Call<BaseResponse<T>> call, Response<BaseResponse<T>> response) {
-
         if (response.body() != null) {
             if (((BaseResponse) response.body()).getStatus() == 1) {
                 onSucess(response.body().getResult());

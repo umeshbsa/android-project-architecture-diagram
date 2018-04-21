@@ -1,7 +1,8 @@
 # Android Project Architecture.
 This is example of android project architecture.
 
-# 1. Project Setup -
+# Project Setup -
+
   Project name -
   Package name - com.app....
   Android Design Pattern - MVC
@@ -13,6 +14,108 @@ This is example of android project architecture.
                    Retrofit - Rest network api call
                    OkHttp3 - Used for rest api and it is used to retrofit, interceptor
                    PubNub - Chatting for text - https://www.pubnub.com/
+
+# Module Define -
+
+  Login
+  Feed
+  Notification
+  Settings
+
+# Project Architecture -
+
+  - ApiClient -
+    Used retrofit with and without dagger2
+    Without dagger2
+    Class - ApiCallback - Get all pai call and parse response in POJO format and send success or error from call api
+            ApiClient - setup all api client with url, interceptor, gson and ssl
+            ApiInterceptor - Control header, app version name and code, and validate by access token
+            IApiRequest - This is interface. Create all method to api call
+    ```java
+    ApiCallback-
+    public abstract class ApiCallback<T> implements Callback<BaseResponse<T>> {... and so on
+
+    ApiClient-
+    Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl(BuildConfig.HOST)
+                    .addConverterFactory(GsonConverterFactory.create()).client(okHttpClient)
+                    .build();
+            apiRequest = retrofit.create(requestClass);
+
+    IApiRequest-
+    public interface IApiRequest {
+        @FormUrlEncoded
+        @POST("api/v1/login")
+        Call<BaseResponse<User>> loginAPI(
+                @Field(FIELD.EMAIL) String email);
+    }
+    ```
+    With dagger2 -
+    Class - NetModule - Create dagger2 module for network
+    ```java
+    NetModule -
+@Module
+public class NetModule {
+    private final String url;
+    public NetModule(String url) {
+        this.url = url;
+    }
+    /*
+     * @param application
+     *        Fetch Application object from AppModule
+     * */
+    @Provides
+    @Singleton
+    Cache provideOkHttpCache(Application application) {
+        int cacheSize = 10 * 1024 * 1024;
+        return new Cache(application.getCacheDir(), cacheSize);
+    }
+
+    /*
+     * @param cache
+     *        Fetch Cache object from 'Cache provideOkHttpCache' method
+     * */
+    @Provides
+    @Singleton
+    OkHttpClient provideOkHttpClient(Cache cache) {
+        OkHttpClient okHttpClient = new OkHttpClient();
+        okHttpClient.newBuilder().cache(cache);
+        return okHttpClient;
+    }
+
+    /*
+     * @param gson
+     *        Fetch Gson object from 'GsonModule' method
+     *
+     * @param okHttpClient
+     *        Fetch OkHttpClient object from 'OkHttpClient provideOkHttpClient' method
+     * */
+    @Provides
+    @Singleton
+    Retrofit provideRetrofit(Gson gson, OkHttpClient okHttpClient) {
+        return new Retrofit.Builder()
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .baseUrl(url)
+                .client(okHttpClient)
+                .build();
+    }
+
+    /*
+     * @param retrofit
+     *        Fetch retrofit class from gradle dependency
+     *        This is IApiService interface to used inject in activity class
+     * */
+    @Provides
+    @Singleton
+    IApiService provideIApiService(Retrofit retrofit) {
+        IApiService service = retrofit.create(IApiService.class);
+        return service;
+    }
+
+}
+    }
+    ```
+
 
 
 1. Add code in application class project

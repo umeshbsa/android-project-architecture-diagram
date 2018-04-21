@@ -13,12 +13,10 @@ import retrofit2.http.POST;
  */
 
 public interface IApiRequest {
-
     @FormUrlEncoded
-    @POST("quax/payer/api/v1/login")
+    @POST("api/v1/login")
     Call<BaseResponse<User>> loginAPI(
             @Field(FIELD.EMAIL) String email);
-
     interface FIELD {
         String EMAIL = "email";
     }
