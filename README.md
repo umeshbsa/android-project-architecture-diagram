@@ -21,12 +21,9 @@ This is example of android project architecture.
   * Feed
   * Notification
   * Settings
-```css
-<font color="red">This is some text!</font>
-```
-## Project Architecture
 
-1. ApiClient<br/>
+## Project Architecture
+1.  ##ApiClient<br/>
     &emsp;Used retrofit with and without dagger2<br/>
     &emsp;Without dagger2<br/>
 
@@ -114,7 +111,8 @@ This is example of android project architecture.
     }
 }
 ```
-## Fragment used bt Factory Pattern
+## Factory Pattern<br/>
+   Used this pattern to manage fragment
 ```java
    public static FragmentFactory newInstance() {
         if (INSTANCE == null) {
@@ -139,7 +137,6 @@ To used fragment factory pattern
 ```java
  fragment = FragmentFactory.newInstance().getFragment(FragmentFactory.HOME_FRAGMENT_TAG);
 ```
-
 # Licence
 
     Copyright 2018 Umesh Kumar
