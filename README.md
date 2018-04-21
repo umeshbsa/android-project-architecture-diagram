@@ -7,15 +7,14 @@ This is example of android project architecture.
   * Android Design Pattern - MVC
   * Package Init - Package is init by layer
   * Dependency Lib
-```html
-   Dagger2 for DI.
-   Glide for image loading
-   CardView - elevation for view
-   RecycleView - Show data in list/grid
-   Retrofit - Rest network api call
-   OkHttp3 - Used for rest api and it is used to retrofit, interceptor
-   PubNub - Chatting for text - https://www.pubnub.com/
-```
+   &emsp;Dagger2 for DI........<br/>
+   &emsp;Glide for image loading<br/>
+   &emsp;CardView - elevation for view<br/>
+   &emsp;RecycleView - Show data in list/grid<br/>
+   &emsp;Retrofit - Rest network api call<br/>
+   &emsp;OkHttp3 - Used for rest api and it is used to retrofit, interceptor<br/>
+   &emsp;PubNub - Chatting for text - https://www.pubnub.com/
+
 ## Module Define
   * Login
   * Feed
@@ -111,7 +110,7 @@ This is example of android project architecture.
     }
 }
 ```
-2. #Factory Pattern<br/>
+2. ##Factory Pattern<br/>
    Used this pattern to manage fragment
 ```java
    public static FragmentFactory newInstance() {
@@ -138,6 +137,13 @@ Used this code in any activity/fragment to get fragment instance by factory patt
    // Here this is fragment instance by tag as you pass in getFragment method
    fragment = FragmentFactory.newInstance().getFragment(FragmentFactory.HOME_FRAGMENT_TAG);
 ```
+3. ##Database Design<br/>
+     &emsp;Used Room architecture<br/>
+     &emsp;Used Content Provider
+     &emsp;Create Db Schema.
+     <img src="http://i.imgur.com/4aRRnAe.gif" width="350" />
+
+
 # Licence
 
     Copyright 2018 Umesh Kumar
