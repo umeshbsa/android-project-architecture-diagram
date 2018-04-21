@@ -133,9 +133,10 @@ This is example of android project architecture.
         return baseFragment;
     }
 ```
-To used fragment factory pattern
+Used this code in any activity/fragment to get fragment instance by factory pattern
 ```java
- fragment = FragmentFactory.newInstance().getFragment(FragmentFactory.HOME_FRAGMENT_TAG);
+   // Here this is fragment instance by tag as you pass in getFragment method
+   fragment = FragmentFactory.newInstance().getFragment(FragmentFactory.HOME_FRAGMENT_TAG);
 ```
 # Licence
 
