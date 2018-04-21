@@ -116,7 +116,7 @@ Used this code in any activity/fragment to get fragment instance by factory patt
 ```
 3. ##Database Design<br/>
      &emsp;*Used Room architecture<br/>
-     &emsp;*Used Content Provider
+     &emsp;*Used Content Provider<br/>
      &emsp;*Create Db Schema.<br/>
      <img src="http://i.imgur.com/4aRRnAe.gif" width="350" />
 
