@@ -3,6 +3,7 @@ package com.app.architecture.fragment;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
@@ -14,6 +15,7 @@ import android.widget.GridView;
 
 import com.app.architecture.R;
 import com.app.architecture.adapter.FlavorAdapter;
+import com.app.architecture.db.FlavorDbManager;
 import com.app.architecture.db.FlavorsContract;
 import com.app.architecture.model.Flavor;
 
@@ -38,6 +40,12 @@ public class FlavorFragment extends BaseFragment implements LoaderManager.Loader
     public FlavorFragment() {
     }
 
+
+    Handler handler = new Handler() {
+
+    };
+
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         Cursor c =
@@ -47,7 +55,7 @@ public class FlavorFragment extends BaseFragment implements LoaderManager.Loader
                         null,
                         null);
         if (c.getCount() == 0) {
-            insertData();
+            FlavorDbManager.insertFlavorData(activity, flavors, handler);
         }
         // initialize loader
         getLoaderManager().initLoader(CURSOR_LOADER_ID, null, this);
@@ -87,7 +95,7 @@ public class FlavorFragment extends BaseFragment implements LoaderManager.Loader
         }
 
         // bulkInsert our ContentValues array
-        getActivity().getContentResolver().bulkInsert(FlavorsContract.FlavorEntry.CONTENT_URI,
+        activity.getContentResolver().bulkInsert(FlavorsContract.FlavorEntry.CONTENT_URI,
                 flavorValuesArr);
     }
 

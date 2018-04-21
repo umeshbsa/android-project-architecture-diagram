@@ -87,6 +87,9 @@ This is example of android project architecture.
     }
 }
 ```
+Network api architecture<br/>
+<img src="http://i.imgur.com/4aRRnAe.gif" width="350" />
+
 2. ##Factory Pattern<br/>
    Used this pattern to manage fragment
 ```java
@@ -114,13 +117,125 @@ Used this code in any activity/fragment to get fragment instance by factory patt
    // Here this is fragment instance by tag as you pass in getFragment method
    fragment = FragmentFactory.newInstance().getFragment(FragmentFactory.HOME_FRAGMENT_TAG);
 ```
+Fragment Factory Pattern architecture<br/>
+<img src="http://i.imgur.com/4aRRnAe.gif" width="350" />
+
 3. ##Database Design<br/>
      &emsp;*Used Room architecture<br/>
+     Room Architecture<br/>
+     <img src="http://i.imgur.com/4aRRnAe.gif" width="350" />
      &emsp;*Used Content Provider<br/>
+     ContentProvider Architecture<br/>
+     <img src="http://i.imgur.com/4aRRnAe.gif" width="350" />
      &emsp;*Create Db Schema.<br/>
      <img src="http://i.imgur.com/4aRRnAe.gif" width="350" />
 
-4. ##
+4. ##Chat<br/>
+     &emsp;*Chat flow with model, view controller, view(ui) and network api<br/>
+      <img src="http://i.imgur.com/4aRRnAe.gif" width="350" />
+
+5. ##Activity State Machine<br/>
+   <img src="http://i.imgur.com/4aRRnAe.gif" width="350" />
+
+6. ##Comment Data flow<br/>
+   Update item from screen2 to screen1<br/>
+   Used Observer Pattern<br/>
+   <img src="http://i.imgur.com/4aRRnAe.gif" width="350" />
+
+7. ##Abstraction login<br/>
+   Call method from adapter<br/>
+```java
+   public abstract class BaseActivity{
+     public abstract void shareData(Object... data);
+   }
+   Now in Adapter
+   activity.shareData(data);
+   Now in HomeActivity
+   @Override
+   public void shareData(Object... a){
+      // find data
+   }
+```
+
+8. ##Android gradle dependency with version detail
+```java
+   project.ext {
+       supportAndroidVersion = "27.1.1"
+       daggerVersion = "2.13"
+       retrofitVersion = "2.0.2"
+       okhttpVersion = "3.2.0"
+   }
+   and used here in app gradle dependencies...
+   implementation "com.android.support:appcompat-v7:$project.supportAndroidVersion"
+```
+
+9. ##Upload Image<br/>
+     Do not uload with user data and image at same time.<br/>
+     Use two api first upload user data and then upload image but do not show progress bar.<br/>
+     If you want ot best practice show notification bar when upload image
+
+10. ##Use ProgressBar in BaseActivity
+```java
+   public void showProgressBar() {
+        if (BaseActivity.this != null && !BaseActivity.this.isFinishing()) {
+            if (progressDialog == null) {
+                progressDialog = ProgressDialog.show(BaseActivity.this, "", "", true);
+            }
+            progressDialog.setCanceledOnTouchOutside(false);
+            progressDialog.setContentView(R.layout.progress_layout);
+            progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        }
+    }
+
+    public void hideProgressBar() {
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+            progressDialog = null;
+        }
+    }
+```
+
+11. ##Use Header as Toolbar in BaseActivity
+```java
+   public void setToolbarHeader(String title) {
+        setToolbarHeader(title, true);
+   }
+
+   public void setToolbarHeader(String title, boolean isBack) {
+        mTopToolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (mTopToolbar != null) {
+            setSupportActionBar(mTopToolbar);
+            getSupportActionBar().setDisplayShowHomeEnabled(isBack);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(isBack);
+            if (isBack)
+                mTopToolbar.setNavigationIcon(R.drawable.back_forgot);
+            getSupportActionBar().setTitle(title);
+
+            mTopToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onBackPressed();
+                }
+            });
+        }
+   }
+ ```
+
+ 12. ##Use resume upload and resume download file.<br/>
+     Start download/upload file, if network has gone and<br/>after some time network is on then do not start initial download/upload.<br/>
+     To save downloaded/uploaded end file length during upload process so that start from this length when network is on.
+
+13 ##Use Memory Management
+   Ignore enum.
+   Use Sparse Array
+   Use Vector drawable
+   Check Android Profile
+   Do not used abstraction if not needed.
+   Use job scheduler for background process
+
+14. ##Api call on Splash Screen
+    Get all maximum data in splash  and splash depend on api data response but if response if greater than 10 second then go to home screen and show
+
 
 # Licence
 

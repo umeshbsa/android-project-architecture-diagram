@@ -8,6 +8,9 @@ import com.app.architecture.di.component.AppComponent;
 import com.app.architecture.fragment.BaseFragment;
 import com.app.architecture.fragmentfactory.FragmentFactory;
 
+import java.util.Observable;
+import java.util.Observer;
+
 public class FlavorActivity extends BaseActivity {
 
     private BaseFragment fragment;
@@ -27,6 +30,8 @@ public class FlavorActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
+
+
 
     }
 }
