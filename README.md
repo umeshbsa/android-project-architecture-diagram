@@ -22,7 +22,7 @@ This is example of android project architecture.
   * Settings
 
 ## Project Architecture
-    ##ApiClient
+##1. ApiClient
     Used retrofit with and without dagger2
     Without dagger2
     *ApiCallback - Get all pai call and parse response in POJO format<br/> and send success or error from call api
