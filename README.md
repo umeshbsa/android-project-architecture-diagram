@@ -88,7 +88,7 @@ This is example of android project architecture.
 }
 ```
 Network api architecture<br/>
-<img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/network_diagram.png" width="350" />
+<img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/network_diagram.png"/>
 
 2. ##Factory Pattern<br/>
    Used this pattern to manage fragment
@@ -118,7 +118,7 @@ Used this code in any activity/fragment to get fragment instance by factory patt
    fragment = FragmentFactory.newInstance().getFragment(FragmentFactory.HOME_FRAGMENT_TAG);
 ```
 Fragment Factory Pattern architecture<br/>
-<img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/fragment_factory.png" width="350" />
+<img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/fragment_factory.png"  />
 
 3. ##Database Design<br/>
      &emsp;*Used Room architecture<br/>
@@ -128,18 +128,18 @@ Fragment Factory Pattern architecture<br/>
      ContentProvider Architecture<br/>
      *
      &emsp;*Create Db Schema.<br/>
-     <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/er.png" width="350" />
+     <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/er.png"  />
 4. ##Chat<br/>
      &emsp;*Chat flow with model, view controller, view(ui) and network api<br/>
-     <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/chat_flow.png" width="350" /><br/>
+     <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/chat_flow.png"  /><br/>
      &emsp;*Chat flow ui.<br/>
-     <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/char_flow_ui.png" width="350" />
+     <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/char_flow_ui.png"  />
 5. ##Activity State Machine<br/>
-    <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/screen_activity_state_machine.png" width="350" />
+    <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/screen_activity_state_machine.png"  />
 6. ##Comment Data flow<br/>
    Update item from screen2 to screen1<br/>
    Used Observer Pattern<br/>
-   <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/comment_count_flow.png" width="350" />
+   <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/comment_count_flow.png"  />
 
 7. ##Abstraction login<br/>
    Call method from adapter<br/>
