@@ -88,7 +88,7 @@ This is example of android project architecture.
 }
 ```
 Network api architecture<br/>
-<img src="http://i.imgur.com/4aRRnAe.gif" width="350" />
+<img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/network_diagram.png" width="350" />
 
 2. ##Factory Pattern<br/>
    Used this pattern to manage fragment
@@ -118,29 +118,28 @@ Used this code in any activity/fragment to get fragment instance by factory patt
    fragment = FragmentFactory.newInstance().getFragment(FragmentFactory.HOME_FRAGMENT_TAG);
 ```
 Fragment Factory Pattern architecture<br/>
-<img src="http://i.imgur.com/4aRRnAe.gif" width="350" />
+<img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/fragment_factory.png" width="350" />
 
 3. ##Database Design<br/>
      &emsp;*Used Room architecture<br/>
      Room Architecture<br/>
-     <img src="http://i.imgur.com/4aRRnAe.gif" width="350" /><br/>
+     *Room database<br/>
      &emsp;*Used Content Provider<br/>
      ContentProvider Architecture<br/>
-     <img src="http://i.imgur.com/4aRRnAe.gif" width="350" /><br/>
+     *
      &emsp;*Create Db Schema.<br/>
-     <img src="http://i.imgur.com/4aRRnAe.gif" width="350" />
-
+     <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/er.png" width="350" />
 4. ##Chat<br/>
      &emsp;*Chat flow with model, view controller, view(ui) and network api<br/>
-      <img src="http://i.imgur.com/4aRRnAe.gif" width="350" />
-
+     <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/chat_flow.png" width="350" /><br/>
+     &emsp;*Chat flow ui.<br/>
+     <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/char_flow_ui.png" width="350" />
 5. ##Activity State Machine<br/>
-   <p align="left">
     <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/screen_activity_state_machine.png" width="350" />
-   </p>
 6. ##Comment Data flow<br/>
    Update item from screen2 to screen1<br/>
    Used Observer Pattern<br/>
+   <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/comment_count_flow.png" width="350" />
 
 7. ##Abstraction login<br/>
    Call method from adapter<br/>
@@ -221,11 +220,11 @@ Fragment Factory Pattern architecture<br/>
    }
  ```
 
- 12. ##Use resume upload and resume download file.<br/>
+12. ##Use resume upload and resume download file.<br/>
      Start download/upload file, if network has gone and<br/>after some time network is on then do not start initial download/upload.<br/>
      To save downloaded/uploaded end file length during upload process so that start from this length when network is on.
 
-13 ##Use Memory Management
+13. ##Use Memory Management
    Ignore enum.
    Use Sparse Array
    Use Vector drawable
