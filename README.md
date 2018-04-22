@@ -10,7 +10,7 @@ This is example of android project architecture.
   - [Database Design](#database-design)
   - [Chat](#chat)
   - [Activity State Machine](#activity-state-machine)
-  - [Comment Data Flow](#comment-data-flow)
+  - [Comment Data Flow with Observable pattern](#comment-data-flow)
   - [Abstraction Logic](#abstraction-logic)
   - [Android gradle dependency with version details](#android-gradle)
   - [Upload Image](#upload-image)
@@ -152,8 +152,8 @@ Fragment Factory Pattern architecture<br/>
           MyDBOpenHelper
           MyContract
           MyDBManager
-     *Create Db Schema.<br/>
-     <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/er.png"  />
+Create Db Schema.<br/>
+<img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/er.png"  />
 **4. Chat**
 
      Chat flow with model, view controller, view(ui) and network api
@@ -161,14 +161,12 @@ Fragment Factory Pattern architecture<br/>
      Chat flow ui.
      <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/char_flow_ui.png"  />
 **5. Activity State Machine**
-
-     <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/screen_activity_state_machine.png"  />
-
-**6. Comment Data flow**
+<img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/screen_activity_state_machine.png"  />
+**6. Comment Data flow Observable pattern**
  
     Update item from screen2 to screen1
     Used Observer Pattern
-    <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/comment_count_flow.png"  />
+<img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/comment_count_flow.png"  />
 
 **7. Abstraction Logic**
 
