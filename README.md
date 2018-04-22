@@ -179,8 +179,10 @@ Used Observer Pattern<br/>
    public abstract class BaseActivity{
      public abstract void shareData(Object... data);
    }
+   
    Now in Adapter
    activity.shareData(data);
+   
    Now in HomeActivity
    @Override
    public void shareData(Object... a){
@@ -202,9 +204,9 @@ Used Observer Pattern<br/>
 
 **9. Upload Image**
 
-     Do not uload with user data and image at same time.<br/>
-     Use two api first upload user data and then upload image but do not show progress bar.<br/>
-     If you want ot best practice show notification bar when upload image
+     * Do not uload with user data and image at same time.
+     * Use two api first upload user data and then upload image but do not show progress bar.
+     * If you want to best practice show notification bar when upload image.
 
 **10. Use ProgressBar in BaseActivity**
 ```java
