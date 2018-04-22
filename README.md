@@ -158,9 +158,9 @@ Create Db Schema.<br/>
 **4. Chat**
 
 Chat flow with model, view controller, view(ui) and network api
-<img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/chat_flow.png"/>
+<img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/chat_flow.png"/><br/>
 Chat flow ui.<br/>
-<img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/char_flow_ui.png"  />
+<img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/chat_flow_ui.png"/>
 
 **5. Activity State Machine**
 
