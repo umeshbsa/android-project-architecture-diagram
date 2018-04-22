@@ -20,7 +20,7 @@ public class HomeFragment extends BaseFragment {
         return view;
     }
 
-    private void getUserData(){
-
+    private void getUserData() {
+        activity.hideProgressBar();
     }
 }
