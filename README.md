@@ -1,8 +1,22 @@
-## Android Project Architecture.
+### Android Project Architecture.
 This is example of android project architecture.
+- [Project Setup](#Project Setup)
+- [How it works](#how-it-works)
+- [Components](#components)
+- [Data Flows](#data-flows)
+  - [Sending a Post](#sending-a-post)
+  - [Synchronizing Feeds](#synchronizing-feeds)
+  - [Keeping The UI Up to Date](#keeping-the-ui-up-to-date)
+- [Setup & Run & Tests](#setup-run-tests)
+  - [Setup](#setup)
+  - [Running](#running)
+  - [Tests](#tests)
+- [MISC](#misc)
+  - [Avoiding Duplicate Posts](#avoiding-duplicate-posts)
+- [License](#license)
 
-## Project Setup
-  * Project name -
+#### Project Setup
+  * Project name - Android Project Architecture
   * Package name - com.app....
   * Android Design Pattern - MVC
   * Package Init - Package is init by layer
@@ -15,14 +29,14 @@ This is example of android project architecture.
    &emsp;OkHttp3 - Used for rest api and it is used to retrofit, interceptor<br/>
    &emsp;PubNub - Chatting for text - https://www.pubnub.com/
 
-## Package Setup - Layer rule<br/>
+#### Package Setup - Layer
    Package name - include classes, interface<br/>
    *activity - BaseActivity, LoginActivity, HomeActivity<br/>
    *adapter - FlavorAdapter, FlowerAdapter<br/>
    *apiclient - ApiCallback, ApiClient, ApiInterceptor, IApiRequest<br/>
    *di - Create component and module for dagger2
 
-## Naming Convention<br/>
+#### Naming Convention
    *activity - LoginActivity.java, activity_login.xml<br/>
    *adapter - FlavorAdapter.java, adapter_flavor.xml<br/>
    *fragment - LoginFragment.java - fragment_login.xml<br/>
@@ -33,14 +47,15 @@ This is example of android project architecture.
    *drawable - bg_rect_white, bg_circle_blue, selector_check_box<br/>
    *drawable-hdpi - ic_login_user_logo, ic_login_user_camera, ic_notification_back
 
-## Module Define
+#### Module Define
   * Login
   * Feed
   * Notification
   * Settings
 
-## Project Architecture
-1.  ##ApiClient<br/>
+#### Project Architecture
+**1. Network Api**
+
     &emsp;Used retrofit with and without dagger2<br/>
     &emsp;Without dagger2<br/>
 
