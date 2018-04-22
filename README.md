@@ -154,18 +154,21 @@ Fragment Factory Pattern architecture<br/>
           MyDBManager
 Create Db Schema.<br/>
 <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/er.png"  />
+
 **4. Chat**
 
-     Chat flow with model, view controller, view(ui) and network api
-     <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/chat_flow.png"/>
-     Chat flow ui.
-     <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/char_flow_ui.png"  />
+Chat flow with model, view controller, view(ui) and network api
+<img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/chat_flow.png"/>
+Chat flow ui.
+<img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/char_flow_ui.png"  />
+
 **5. Activity State Machine**
 <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/screen_activity_state_machine.png"  />
+
 **6. Comment Data flow Observable pattern**
  
     Update item from screen2 to screen1
-    Used Observer Pattern
+Used Observer Pattern
 <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/comment_count_flow.png"  />
 
 **7. Abstraction Logic**
