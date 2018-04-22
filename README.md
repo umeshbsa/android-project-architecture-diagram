@@ -1,18 +1,25 @@
 ### Android Project Architecture.
 This is example of android project architecture.
-- [Project Setup](#Project Setup)
-- [How it works](#how-it-works)
-- [Components](#components)
-- [Data Flows](#data-flows)
-  - [Sending a Post](#sending-a-post)
-  - [Synchronizing Feeds](#synchronizing-feeds)
-  - [Keeping The UI Up to Date](#keeping-the-ui-up-to-date)
-- [Setup & Run & Tests](#setup-run-tests)
-  - [Setup](#setup)
-  - [Running](#running)
+- [Project Setup](#project-setup)
+- [Package Setup - Layer](#package-setup---layer)
+- [Naming Convention](#naming-convention)
+- [Module Define](#module-define)
+- [Project Architecture](#project-architecture)
+  - [Network Api](#network-api)
+  - [Factory Pattern](#factory-pattern)
+  - [Database Design](#database-design)
+  - [Chat](#chat)
+  - [Activity State Machine](#activity-state-machine)
+  - [Comment Data Flow](#comment-data-flow)
+  - [Abstraction Logic](#abstraction-logic)
+  - [Android gradle dependency with version details](#android-gradle)
+  - [Upload Image](#upload-image)
+  - [Use Progressbar in BaseActivity](#progressbar-baseactivity)
+  - [Use Header as Toolbar in BaseActivity](#toolbar-baseactivity)
+  - [Use resume upload and resume download file](#file)
+  - [Memory Management](#memory-management)
+  - [Api call on Splash Screen](#splash)
   - [Tests](#tests)
-- [MISC](#misc)
-  - [Avoiding Duplicate Posts](#avoiding-duplicate-posts)
 - [License](#license)
 
 #### Project Setup
@@ -21,13 +28,13 @@ This is example of android project architecture.
   * Android Design Pattern - MVC
   * Package Init - Package is init by layer
   * Dependency Lib
-   &emsp;Dagger2 for DI........<br/>
-   &emsp;Glide for image loading<br/>
-   &emsp;CardView - elevation for view<br/>
-   &emsp;RecycleView - Show data in list/grid<br/>
-   &emsp;Retrofit - Rest network api call<br/>
-   &emsp;OkHttp3 - Used for rest api and it is used to retrofit, interceptor<br/>
-   &emsp;PubNub - Chatting for text - https://www.pubnub.com/
+   Dagger2 for DI........<br/>
+   Glide for image loading<br/>
+   CardView - elevation for view<br/>
+   RecycleView - Show data in list/grid<br/>
+   Retrofit - Rest network api call<br/>
+   OkHttp3 - Used for rest api and it is used to retrofit, interceptor<br/>
+   PubNub - Chatting for text - https://www.pubnub.com/
 
 #### Package Setup - Layer
    Package name - include classes, interface<br/>
@@ -56,13 +63,11 @@ This is example of android project architecture.
 #### Project Architecture
 **1. Network Api**
 
-    &emsp;Used retrofit with and without dagger2<br/>
-    &emsp;Without dagger2<br/>
-
-    &emsp;ApiCallback - Get all pai call and parse response in POJO format and send success or error from call api<br/>
-    &emsp;ApiClient - setup all api client with url, interceptor, gson and ssl<br/>
-    &emsp;ApiInterceptor - Control header, app version name and code, and validate by access token<br/>
-    &emsp;IApiRequest - This is interface. Create all method to api call<br/>
+     Without dagger2
+    ApiCallback - Get all pai call and parse response in POJO format and send success or error from call api
+    ApiClient - setup all api client with url, interceptor, gson and ssl
+    ApiInterceptor - Control header, app version name and code, and validate by access token
+    IApiRequest - This is interface. Create all method to api call
 ```java
     //Class ApiCallback
     public abstract class ApiCallback<T> implements Callback<BaseResponse<T>> {... and so on
@@ -105,8 +110,9 @@ This is example of android project architecture.
 Network api architecture<br/>
 <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/network_diagram.png"/>
 
-2. ##Factory Pattern<br/>
-   Used this pattern to manage fragment
+**1. Factory Pattern**
+
+   Used this pattern to manage fragment object
 ```java
    public static FragmentFactory newInstance() {
         if (INSTANCE == null) {
@@ -135,29 +141,38 @@ Used this code in any activity/fragment to get fragment instance by factory patt
 Fragment Factory Pattern architecture<br/>
 <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/fragment_factory.png"  />
 
-3. ##Database Design<br/>
-     &emsp;*Used Room architecture<br/>
-     Room Architecture<br/>
-     *Room database<br/>
-     &emsp;*Used Content Provider<br/>
-     ContentProvider Architecture<br/>
-     *
-     &emsp;*Create Db Schema.<br/>
-     <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/er.png"  />
-4. ##Chat<br/>
-     &emsp;*Chat flow with model, view controller, view(ui) and network api<br/>
-     <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/chat_flow.png"  /><br/>
-     &emsp;*Chat flow ui.<br/>
-     <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/char_flow_ui.png"  />
-5. ##Activity State Machine<br/>
-    <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/screen_activity_state_machine.png"  />
-6. ##Comment Data flow<br/>
-   Update item from screen2 to screen1<br/>
-   Used Observer Pattern<br/>
-   <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/comment_count_flow.png"  />
+**3. Database Design**
 
-7. ##Abstraction login<br/>
-   Call method from adapter<br/>
+     * Used Room architecture
+          Entity
+          Dao
+          Room database
+     *Used Content Provider
+          MyConetentProvider
+          MyDBOpenHelper
+          MyContract
+          MyDBManager
+     *Create Db Schema.<br/>
+     <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/er.png"  />
+**4. Chat**
+
+     Chat flow with model, view controller, view(ui) and network api
+     <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/chat_flow.png"/>
+     Chat flow ui.
+     <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/char_flow_ui.png"  />
+**5. Activity State Machine**
+
+     <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/screen_activity_state_machine.png"  />
+
+**6. Comment Data flow**
+ 
+    Update item from screen2 to screen1
+    Used Observer Pattern
+    <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/comment_count_flow.png"  />
+
+**7. Abstraction Logic**
+
+    Call method from adapter
 ```java
    public abstract class BaseActivity{
      public abstract void shareData(Object... data);
@@ -167,11 +182,11 @@ Fragment Factory Pattern architecture<br/>
    Now in HomeActivity
    @Override
    public void shareData(Object... a){
-      // find data
+      // find data and update ui
    }
 ```
 
-8. ##Android gradle dependency with version detail
+**8. Android gradle dependency with version detail**
 ```java
    project.ext {
        supportAndroidVersion = "27.1.1"
@@ -183,12 +198,13 @@ Fragment Factory Pattern architecture<br/>
    implementation "com.android.support:appcompat-v7:$project.supportAndroidVersion"
 ```
 
-9. ##Upload Image<br/>
+**9. Upload Image**
+
      Do not uload with user data and image at same time.<br/>
      Use two api first upload user data and then upload image but do not show progress bar.<br/>
      If you want ot best practice show notification bar when upload image
 
-10. ##Use ProgressBar in BaseActivity
+**10. Use ProgressBar in BaseActivity**
 ```java
    public void showProgressBar() {
         if (BaseActivity.this != null && !BaseActivity.this.isFinishing()) {
@@ -208,8 +224,7 @@ Fragment Factory Pattern architecture<br/>
         }
     }
 ```
-
-11. ##Use Header as Toolbar in BaseActivity
+**11. Use Header as Toolbar in BaseActivity**
 ```java
    public void setToolbarHeader(String title) {
         setToolbarHeader(title, true);
@@ -234,24 +249,26 @@ Fragment Factory Pattern architecture<br/>
         }
    }
  ```
+**12. Use resume upload and resume download file**
 
-12. ##Use resume upload and resume download file.<br/>
      Start download/upload file, if network has gone and<br/>after some time network is on then do not start initial download/upload.<br/>
      To save downloaded/uploaded end file length during upload process so that start from this length when network is on.
 
-13. ##Use Memory Management
-   Ignore enum.
-   Use Sparse Array
-   Use Vector drawable
-   Check Android Profile
-   Do not used abstraction if not needed.
-   Use job scheduler for background process
+**13. Use Memory Management**
 
-14. ##Api call on Splash Screen
+    Ignore enum.
+    Use Sparse Array
+    Use Vector drawable
+    Check Android Profile
+    Do not used abstraction if not needed.
+    Use job scheduler for background process
+
+**14. Api call on Splash Screen**
+    
     Get all maximum data in splash  and splash depend on api data response but if response if greater than 10 second then go to home screen and show
 
 
-# Licence
+### Licence
 
     Copyright 2018 Umesh Kumar
 
