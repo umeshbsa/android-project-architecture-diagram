@@ -171,7 +171,7 @@ public BaseFragment getFragment(String TAG) {
      * MyDBOpenHelper
      * MyContract
      * MyDBManager
-   * Create Db Schema.
+   * Create ERD<br/>
     <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/er.png"  />
 
 #### Chat Flow diagram
@@ -291,7 +291,7 @@ public BaseFragment getFragment(String TAG) {
    * Use Vector drawable
    * Check Android Profile
    * Do not used abstraction if not needed.
-   * Use job scheduler for background process
+   * Use job scheduler for background process<br/>
    https://developer.android.com/topic/performance/memory.html
 
 #### Api call on Splash Screen
