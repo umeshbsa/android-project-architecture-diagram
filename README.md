@@ -6,12 +6,12 @@ This is example of android project architecture.
 - [Module Define](#module-define)
 - [Project Architecture](#project-architecture)
   - [Network Api](#network-api)
-  - [Factory Pattern](#factory-pattern)
+  - [Factory Pattern for fragment](#factory-pattern-for-fragment)
   - [Get activity from onAttach in fragment](#get-activity-from-onattach-in-fragment)
   - [Database Design](#database-desig)
   - [Chat Flow](#chat-flow)
   - [Activity State Machine](#activity-state-machine)
-  - [Comment Data Flow with Observable pattern](#comment-data-flow-observable-pattern)
+  - [Comment Data Flow with Observable pattern](#comment-data-flow-with-observable-pattern)
   - [Abstraction Logic](#abstraction-logic)
   - [Android gradle dependency with version details](#android-gradle-dependency-with-version-detail)
   - [Upload Image](#upload-image)
@@ -36,7 +36,6 @@ This is example of android project architecture.
   * PubNub - Chatting for text - https://www.pubnub.com/
 
 ### Package Setup - Layer
-   Package name - include classes, interface
    * activity - BaseActivity, LoginActivity, HomeActivity
    * adapter - FlavorAdapter, FlowerAdapter
    * apiclient - ApiCallback, ApiClient, ApiInterceptor, IApiRequest
@@ -106,12 +105,12 @@ This is example of android project architecture.
     }
 }
 ```
-Network api architecture<br/>
+Network api architecture without dagger2<br/>
 <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/network_diagram.png"/>
 
-#### Factory Pattern
+#### Factory Pattern for fragment
 
-   Used this pattern to manage fragment object
+   * Used this pattern to manage fragment instance
 ```java
    public static FragmentFactory newInstance() {
         if (INSTANCE == null) {
@@ -119,7 +118,10 @@ Network api architecture<br/>
         }
         return INSTANCE;
     }
-     public BaseFragment getFragment(String TAG) {
+```
+   * Use fragment instance by fragment tag
+```java
+public BaseFragment getFragment(String TAG) {
         switch (TAG) {
             case "homeFragmentTag":
                 baseFragment = new HomeFragment();
@@ -132,13 +134,12 @@ Network api architecture<br/>
         return baseFragment;
     }
 ```
-Used this code in any activity/fragment to get fragment instance by factory pattern
+  * Used this code in any activity/fragment to get fragment instance by factory pattern
 ```java
-   // Here this is fragment instance by tag as you pass in getFragment method
    fragment = FragmentFactory.newInstance().getFragment(FragmentFactory.HOME_FRAGMENT_TAG);
 ```
-Fragment Factory Pattern architecture<br/>
-<img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/fragment_factory.png"  />
+  * Fragment Factory Pattern architecture<br/>
+    <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/fragment_factory.png"  />
 
 #### Get activity from onAttach in fragment
  
@@ -161,7 +162,7 @@ Fragment Factory Pattern architecture<br/>
 ```
 #### Database Design
 
-   * Used Room architecture
+   * Used Room Architecture
      * Entity
      * Dao
      * Room database
@@ -173,7 +174,7 @@ Fragment Factory Pattern architecture<br/>
   * Create Db Schema.
     <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/er.png"  />
 
-####Chat Flow
+#### Chat Flow
 
    * Chat flow with model, view controller, view(ui) and network api
      <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/chat_flow.png"/><br/>
@@ -184,7 +185,7 @@ Fragment Factory Pattern architecture<br/>
 
    <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/screen_activity_state_machine.png"  />
 
-#### Comment Data flow Observable Pattern
+#### Comment Data flow with Observable Pattern
  
   * Update item from screen2 to screen1
   * Used Observer Pattern diagram
@@ -218,12 +219,18 @@ Fragment Factory Pattern architecture<br/>
        retrofitVersion = "2.0.2"
        okhttpVersion = "3.2.0"
    }
-   and used here in app gradle dependencies...
+```   
+   *Used in app gradle dependencies
+```java
    implementation "com.android.support:appcompat-v7:$project.supportAndroidVersion"
+   
+   annotationProcessor "com.google.dagger:dagger-compiler:$project.daggerVersion"
+   implementation "com.google.dagger:dagger:$project.daggerVersion"
+
 ```
 #### Upload Image
 
-   * Do not uload with user data and image at same time.
+   * Do not upload user data and image at same time.
    * Use two api first upload user data and then upload image but do not show progress bar.
    * If you want to best practice show notification bar when upload image.
 
