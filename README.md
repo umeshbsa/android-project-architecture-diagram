@@ -1,4 +1,4 @@
-### Android Project Architecture.
+## Android Project Architecture
 This is example of android project architecture.
 - [Project Setup](#project-setup)
 - [Package Setup - Layer](#package-setup---layer)
@@ -8,8 +8,8 @@ This is example of android project architecture.
   - [Network Api](#network-api)
   - [Factory Pattern for fragment](#factory-pattern-for-fragment)
   - [Get activity from onAttach in fragment](#get-activity-from-onattach-in-fragment)
-  - [Database Design](#database-desig)
-  - [Chat Flow](#chat-flow)
+  - [Database Design](#database-design)
+  - [Chat Flow diagram](#chat-flow-diagram)
   - [Activity State Machine](#activity-state-machine)
   - [Comment Data Flow with Observable pattern](#comment-data-flow-with-observable-pattern)
   - [Abstraction Logic](#abstraction-logic)
@@ -171,10 +171,10 @@ public BaseFragment getFragment(String TAG) {
      * MyDBOpenHelper
      * MyContract
      * MyDBManager
-  * Create Db Schema.
+   * Create Db Schema.
     <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/er.png"  />
 
-#### Chat Flow
+#### Chat Flow diagram
 
    * Chat flow with model, view controller, view(ui) and network api
      <img src="https://github.com/umeshbsa/android-project-architecture-diagram/blob/master/screen/chat_flow.png"/><br/>
@@ -220,7 +220,7 @@ public BaseFragment getFragment(String TAG) {
        okhttpVersion = "3.2.0"
    }
 ```   
-   *Used in app gradle dependencies
+   * Used in app gradle dependencies
 ```java
    implementation "com.android.support:appcompat-v7:$project.supportAndroidVersion"
    
@@ -292,6 +292,7 @@ public BaseFragment getFragment(String TAG) {
    * Check Android Profile
    * Do not used abstraction if not needed.
    * Use job scheduler for background process
+   https://developer.android.com/topic/performance/memory.html
 
 #### Api call on Splash Screen
     
